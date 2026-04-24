@@ -18,7 +18,6 @@ const ROLE_COLORS: Record<Role, string> = {
 function agentImg(name: string) {
   return `/agents/${name.toLowerCase()}.png`
 }
-
 function AgentDot(props: any) {
   const { cx, cy, payload } = props
   if (cx == null || cy == null) return null
@@ -56,13 +55,8 @@ function AgentTooltip({ active, payload }: any) {
   const color = ROLE_COLORS[d.role] ?? '#9ca3af'
   return (
     <div className="bg-vct-900 border border-white/10 rounded-lg p-3 text-xs shadow-xl">
-      <div className="flex items-center gap-2.5 mb-2">
-        <img src={agentImg(d.agent)} alt={d.agent} className="w-9 h-9 rounded object-cover" />
-        <div>
-          <p className="font-bold text-white text-sm leading-none">{d.agent}</p>
-          <p className="mt-1 font-medium text-[11px]" style={{ color }}>{d.role}</p>
-        </div>
-      </div>
+      <p className="font-bold text-white text-sm mb-0.5">{d.agent}</p>
+      <p className="mb-2 font-medium" style={{ color }}>{d.role}</p>
       <div className="space-y-1 text-gray-300">
         <p>Win Rate <span className="font-bold text-white float-right ml-6">{d.winrate}%</span></p>
         <p>Pick Rate <span className="font-bold text-white float-right ml-6">{d.pickrate}%</span></p>
