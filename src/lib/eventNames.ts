@@ -1,7 +1,16 @@
-const EVENT_NAMES: Record<string, string> = {
-  '2760': 'VCT Masters Santiago 2026',
-}
+import { API_BASE } from './api'
 
-export function getEventName(eventId: string): string {
-  return EVENT_NAMES[eventId] ?? `Event ${eventId}`
+const cache = new Map<string, string>()
+
+export async function fetchEventName(eventId: string): Promise<string> {
+  if (cache.has(eventId)) return cache.get(eventId)!
+  try {
+    const res = await fetch(`${API_BASE}/events/${eventId}`)
+    const data = await res.json()
+    const name: string = data.data?.name ?? `Event ${eventId}`
+    cache.set(eventId, name)
+    return name
+  } catch {
+    return `Event ${eventId}`
+  }
 }

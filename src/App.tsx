@@ -1,37 +1,31 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import type { Page } from './components/Navbar'
 import EventsListPage from './pages/EventsListPage'
 import EventsPage from './pages/EventsPage'
 import AnalysisPage from './pages/AnalysisPage'
+import VisualizationPage from './pages/VisualizationPage'
 
-function App() {
-  const [page, setPage] = useState<Page>('home')
-  const [selectedEventId, setSelectedEventId] = useState<string | null>(null)
-
-  const handleNavigate = (p: Page) => {
-    setPage(p)
-    setSelectedEventId(null)
-  }
-
+function Home() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <Navbar activePage={page} onNavigate={handleNavigate} />
-
-      {page === 'events' && !selectedEventId && (
-        <EventsListPage onSelectEvent={id => setSelectedEventId(id)} />
-      )}
-      {page === 'events' && selectedEventId && (
-        <EventsPage eventId={selectedEventId} onBack={() => setSelectedEventId(null)} />
-      )}
-      {page === 'analysis' && <AnalysisPage />}
-      {page === 'home' && (
-        <div className="flex items-center justify-center h-64 text-gray-400">
-          Select a section from the navbar
-        </div>
-      )}
+    <div className="flex items-center justify-center h-64 text-gray-500">
+      Select a section from the navbar
     </div>
   )
 }
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen bg-vct-950">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/events" element={<EventsListPage />} />
+          <Route path="/events/:eventId" element={<EventsPage />} />
+          <Route path="/analysis" element={<AnalysisPage />} />
+          <Route path="/visualization" element={<VisualizationPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  )
+}

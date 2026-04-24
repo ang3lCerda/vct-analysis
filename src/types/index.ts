@@ -1,27 +1,31 @@
-export interface CompAnalysisRecord {
+export interface MapRecord {
   _id: string
   map_id: string
   match_id: string
   event_id: string
   map_name: string
-  team: string
-  team_id: string
-  comp: string[]
-  opponent: string
-  opponent_id: string
-  rounds_won: string
-  rounds_lost: string
-  attack_rounds_won: string
-  defense_rounds_won: string
-  won: boolean
+  team1: string
+  team1_id: string
+  team1_comp: string[]
+  team1_rounds: string
+  team1_attack_rounds: string
+  team1_defense_rounds: string
+  team2: string
+  team2_id: string
+  team2_comp: string[]
+  team2_rounds: string
+  team2_attack_rounds: string
+  team2_defense_rounds: string
+  winner_id: string
 }
 
-export interface CompAnalysisResponse {
+export interface MapRecordResponse {
   status: string
   count: number
-  data: CompAnalysisRecord[]
+  data: MapRecord[]
 }
 
+// EventsPage display types
 export interface MapPlay {
   map_id: string
   map_name: string
@@ -45,36 +49,4 @@ export interface Match {
   team1_maps_won: number
   team2_maps_won: number
   maps: MapPlay[]
-}
-
-// Legacy performance types
-export interface PlayerStat {
-  name: string
-  '2k': string
-  '3k': string
-  '4k': string
-  '5k': string
-  '1v1': string
-  '1v2': string
-  '1v3': string
-  '1v4': string
-  '1v5': string
-  econ: string
-  pl: string
-  de: string
-  event_id: string
-  match_id: string
-  game_id: string
-}
-
-export interface MatchPerformance {
-  _id: string
-  url: string
-  stats: PlayerStat[]
-}
-
-export interface PerformanceResponse {
-  status: string
-  count: number
-  data: MatchPerformance[]
 }
