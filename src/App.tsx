@@ -62,18 +62,36 @@ function Home() {
   )
 }
 
+function Footer() {
+  return (
+    <footer className="border-t border-vct-800 bg-vct-900 px-6 py-4 text-center text-xs text-dusty-denim-500 leading-relaxed">
+      <p>
+        VCTAnalysis is not affiliated with, endorsed by, or associated with Riot Games, Inc.
+      </p>
+      <p className="mt-1">
+        VALORANT and VCT are trademarks or registered trademarks of Riot Games, Inc.
+        All game content and materials are property of their respective owners.
+        &copy; {new Date().getFullYear()} VCTAnalysis. All rights reserved.
+      </p>
+    </footer>
+  )
+}
+
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-vct-950">
+      <div className="min-h-screen bg-vct-950 flex flex-col">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/events" element={<EventsListPage />} />
-          <Route path="/events/:eventId" element={<EventsPage />} />
-          <Route path="/analysis" element={<AnalysisPage />} />
-          <Route path="/visualization" element={<VisualizationPage />} />
-        </Routes>
+        <div className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/events" element={<EventsListPage />} />
+            <Route path="/events/:eventId" element={<EventsPage />} />
+            <Route path="/analysis" element={<AnalysisPage />} />
+            <Route path="/visualization" element={<VisualizationPage />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
     </BrowserRouter>
   )
