@@ -1,1 +1,1 @@
-export const API_BASE = 'http://0.0.0.0:8000'
+export const API_BASE = 'https://vct-u2j6.onrender.com'
