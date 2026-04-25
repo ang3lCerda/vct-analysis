@@ -18,12 +18,12 @@ function Home() {
       <img
         src="/homepage/mariin.gif"
         alt=""
-        className="absolute bottom-6 left-6 w-28 rounded-lg opacity-90 border border-vct-700"
+        className="absolute top-6 left-6 w-28 rounded-lg opacity-90 border border-vct-700"
       />
       <img
         src="/homepage/scared-terrified.gif"
         alt=""
-        className="absolute bottom-6 right-6 w-28 rounded-lg opacity-90 border border-vct-700"
+        className="absolute top-6 right-6 w-28 rounded-lg opacity-90 border border-vct-700"
       />
 
       {/* hero */}
@@ -43,7 +43,7 @@ function Home() {
             </span>
           </h1>
           <p className="text-xl text-dusty-denim-400 font-medium">
-            where you can nerd out
+            live out your coaching dreams
           </p>
         </div>
 
