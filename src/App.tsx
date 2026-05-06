@@ -4,6 +4,9 @@ import EventsListPage from './pages/EventsListPage'
 import EventsPage from './pages/EventsPage'
 import AnalysisPage from './pages/AnalysisPage'
 import VisualizationPage from './pages/VisualizationPage'
+import LoginPage from './pages/LoginPage'
+import JournalPage from './pages/JournalPage'
+import { AuthProvider } from './context/AuthContext'
 
 function Home() {
   return (
@@ -79,20 +82,24 @@ function Footer() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <div className="min-h-screen bg-vct-950 flex flex-col">
-        <Navbar />
-        <div className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/events" element={<EventsListPage />} />
-            <Route path="/events/:eventId" element={<EventsPage />} />
-            <Route path="/analysis" element={<AnalysisPage />} />
-            <Route path="/visualization" element={<VisualizationPage />} />
-          </Routes>
+    <AuthProvider>
+      <BrowserRouter>
+        <div className="min-h-screen bg-vct-950 flex flex-col">
+          <Navbar />
+          <div className="flex-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/events" element={<EventsListPage />} />
+              <Route path="/events/:eventId" element={<EventsPage />} />
+              <Route path="/analysis" element={<AnalysisPage />} />
+              <Route path="/visualization" element={<VisualizationPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/journal" element={<JournalPage />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
